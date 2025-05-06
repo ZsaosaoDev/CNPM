@@ -3,6 +3,8 @@ package com.cnpm.gameapp;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.cnpm.gameapp.games.tictactoe.TicTacToePanel;
+import com.cnpm.gameapp.games.minesweeper.MinesweeperPanel;
+
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -36,7 +38,8 @@ public class GameApp {
         container.add(createTicTacToePanel(cardLayout, container), "tictactoe");
         // Thêm game giả lập khác nếu cần
         container.add(createDummyGamePanel("Rắn săn mồi", cardLayout, container), "snake");
-        container.add(createDummyGamePanel("Dò mìn", cardLayout, container), "minesweeper");
+        container.add(createMinesweeperPanel(cardLayout, container), "minesweeper");
+
         container.add(createDummyGamePanel("Ghép thẻ", cardLayout, container), "memory");
 
         frame.setContentPane(container);
@@ -73,6 +76,11 @@ public class GameApp {
     private static JPanel createTicTacToePanel(CardLayout layout, JPanel container) {
         // Tạo panel Cờ Caro thực sự
         return new TicTacToePanel(layout, container);
+    }
+
+    private static JPanel createMinesweeperPanel(CardLayout layout, JPanel container) {
+        // Tạo panel Cờ Caro thực sự
+        return new MinesweeperPanel(layout, container);
     }
 
     private static JPanel createDummyGamePanel(String gameName, CardLayout layout, JPanel container) {
