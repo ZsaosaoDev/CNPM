@@ -3,6 +3,7 @@ package com.cnpm.gameapp;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.cnpm.gameapp.games.tictactoe.TicTacToePanel;
+import com.cnpm.gameapp.system.LaucherManager;
 import com.cnpm.gameapp.games.minesweeper.MinesweeperPanel;
 
 import net.miginfocom.swing.MigLayout;
@@ -11,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameApp {
+    private static JFrame frame;
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
@@ -22,7 +24,7 @@ public class GameApp {
     }
 
     private static void createAndShowGUI() {
-        JFrame frame = new JFrame("🎮 Mini Game Center");
+        frame = new JFrame("🎮 Mini Game Center");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 450);
         frame.setLocationRelativeTo(null);
@@ -37,13 +39,20 @@ public class GameApp {
         // Thêm các game thực sự vào container
         container.add(createTicTacToePanel(cardLayout, container), "tictactoe");
         // Thêm game giả lập khác nếu cần
-        container.add(createDummyGamePanel("Rắn săn mồi", cardLayout, container), "snake");
+        container.add(whitePanel(), "snake");
         container.add(createMinesweeperPanel(cardLayout, container), "minesweeper");
 
         container.add(createDummyGamePanel("Ghép thẻ", cardLayout, container), "memory");
 
         frame.setContentPane(container);
         frame.setVisible(true);
+
+        LaucherManager.getInstance().addGameExitListener(exitCode -> {
+            System.out.println("Game exited with code: " + exitCode);
+            // Xử lý khi game thoát, ví dụ: quay lại menu chính
+            cardLayout.show(container, "menu");
+            frame.setVisible(true);
+        });
     }
 
     private static JPanel createMainMenuPanel(JPanel container, CardLayout layout) {
@@ -56,13 +65,24 @@ public class GameApp {
         panel.add(title, "growx");
 
         panel.add(createNavButton("Cờ Caro", "tictactoe", layout, container), "growx");
-        panel.add(createNavButton("Rắn săn mồi", "snake", layout, container), "growx");
+        panel.add(createLaucherButton(), "growx");
         panel.add(createNavButton("Dò mìn", "minesweeper", layout, container), "growx");
         panel.add(createNavButton("Ghép thẻ", "memory", layout, container), "growx");
 
         return panel;
     }
 
+    private static JButton createLaucherButton() {
+        JButton button = new JButton("Little Coffee");
+        button.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        button.putClientProperty(FlatClientProperties.BUTTON_TYPE, FlatClientProperties.BUTTON_TYPE_ROUND_RECT);
+        button.setPreferredSize(new Dimension(200, 40));
+        button.addActionListener(e -> {
+            frame.setVisible(false);
+            LaucherManager.getInstance().launchGame();
+        });
+        return button;
+    }
     private static JButton createNavButton(String text, String targetCard, CardLayout layout, JPanel container) {
         JButton button = new JButton(text);
         button.setFont(new Font("SansSerif", Font.PLAIN, 18));
@@ -81,6 +101,14 @@ public class GameApp {
     private static JPanel createMinesweeperPanel(CardLayout layout, JPanel container) {
         // Tạo panel Cờ Caro thực sự
         return new MinesweeperPanel(layout, container);
+    }
+
+    private static JPanel whitePanel() {
+        JPanel panel = new JPanel();
+        panel.setBackground(Color.WHITE);
+        frame.setVisible(false);
+
+        return panel;
     }
 
     private static JPanel createDummyGamePanel(String gameName, CardLayout layout, JPanel container) {
