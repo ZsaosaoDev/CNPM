@@ -1,0 +1,364 @@
+[gd_scene load_steps=12 format=3 uid="uid://3eh8wb6ch0tu"]
+
+[ext_resource type="Script" uid="uid://ckssot44ppqw3" path="res://script/CardManager.cs" id="1_itxqv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no8bm"]
+bg_color = Color(0.975112, 0.838653, 0.857061, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0l8b"]
+bg_color = Color(0.976471, 0.839216, 0.858824, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.290196, 0.290196, 0.290196, 0.858824)
+shadow_size = 3
+shadow_offset = Vector2(0, 3.07)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp4xf"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.976471, 0.839216, 0.858824, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_brvut"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ha60"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4j5ol"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_of57s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("card:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("card:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 627)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("card_behind:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("card_behind/Panel/MarginContainer/Panel2:theme_override_styles/panel:bg_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.6, 0.6, 0.6, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p1hux"]
+resource_name = "left_draw"
+length = 1.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("card:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.309]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("card:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.41, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 627), Vector2(576, 882)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("card_behind:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("card_behind/Panel/MarginContainer/Panel2:theme_override_styles/panel:bg_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.20105, 1.24512),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.6, 0.6, 0.6, 1), Color(0.6, 0.6, 0.6, 1), Color(0.6, 0.6, 0.6, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_itxqv"]
+resource_name = "right_drag"
+length = 1.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("card:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.309]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("card:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.41, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 627), Vector2(576, 882)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("card_behind:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("card_behind/Panel/MarginContainer/Panel2:theme_override_styles/panel:bg_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.20105, 1.24512),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.6, 0.6, 0.6, 1), Color(0.6, 0.6, 0.6, 1), Color(0.6, 0.6, 0.6, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b5f6u"]
+_data = {
+&"RESET": SubResource("Animation_of57s"),
+&"left_drag": SubResource("Animation_p1hux"),
+&"right_drag": SubResource("Animation_itxqv")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="main" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("animationPlayer", "preCardDescription", "postCardDescription")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_no8bm")
+script = ExtResource("1_itxqv")
+animationPlayer = NodePath("AnimationPlayer")
+preCardDescription = NodePath("card_behind/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/label")
+postCardDescription = NodePath("card/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/desc")
+
+[node name="card_behind" type="Panel" parent="CanvasLayer/main"]
+layout_mode = 2
+offset_left = 576.0
+offset_top = 627.0
+offset_right = 576.0
+offset_bottom = 627.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/main/card_behind"]
+custom_minimum_size = Vector2(250, 450)
+layout_mode = 2
+offset_left = -125.0
+offset_top = -438.0
+offset_right = 125.0
+offset_bottom = 12.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0l8b")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/main/card_behind/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/main/card_behind/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/main/card_behind/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="Panel" type="Panel" parent="CanvasLayer/main/card_behind/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wp4xf")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/main/card_behind/Panel/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.000374827
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="label" type="Label" parent="CanvasLayer/main/card_behind/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.585062, 0.585062, 0.585062, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_brvut")
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/main/card_behind/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ha60")
+
+[node name="card" type="Panel" parent="CanvasLayer/main"]
+layout_mode = 2
+offset_left = 576.0
+offset_top = 627.0
+offset_right = 576.0
+offset_bottom = 627.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/main/card"]
+custom_minimum_size = Vector2(250, 450)
+layout_mode = 2
+offset_left = -125.0
+offset_top = -438.0
+offset_right = 125.0
+offset_bottom = 12.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v0l8b")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/main/card/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/main/card/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/main/card/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="Panel" type="Panel" parent="CanvasLayer/main/card/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wp4xf")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/main/card/Panel/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.000374827
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="desc" type="Label" parent="CanvasLayer/main/card/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.585062, 0.585062, 0.585062, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_brvut")
+text = "Đây là text"
+
+[node name="info-menu" type="VBoxContainer" parent="CanvasLayer/main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 70
+
+[node name="Panel" type="Panel" parent="CanvasLayer/main/info-menu"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4j5ol")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/main"]
+libraries = {
+&"": SubResource("AnimationLibrary_b5f6u")
+}
