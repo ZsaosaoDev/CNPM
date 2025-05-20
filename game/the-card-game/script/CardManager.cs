@@ -16,27 +16,45 @@ public partial class CardManager : Node
     [Export]
     private Label postCardDescription;
 
-    private bool lockInput = false;
+    
 
     private List<ICard> cards = new List<ICard>();
 
-
-    public void NextCard(CardInputType option) {
+    private bool lockInput = false;
+    public void NextCard(CardInputType option)
+    {
+        if (lockInput)
+        {
+            return;
+        }
+        
         lockInput = true;
-        GD.Print("NextCard called with option: " + option);
+
+        // 4.3. lấy thẻ ngẫu nhiên
         ICard randomCard = RandomCard();
         nextCard = randomCard;
         preCardDescription.Text = nextCard.GetDescription();
 
-        if (option == CardInputType.LEFT) {
+        // 4.4 thực hiện sự kiện
+        randomCard.doAction(option);
+
+        if (option == CardInputType.LEFT)
+        {
+            // 4.9. Chạy animation
             animationPlayer.Play("left_drag");
-        } else if (option == CardInputType.RIGHT) {
+        }
+        else if (option == CardInputType.RIGHT)
+        {
             animationPlayer.Play("right_drag");
         }
+        
+        
 
     }
-
-    public void OnAnimationFinished(StringName animName) {
+    
+    // 4.10. Kết thúc animation
+    public void OnAnimationFinished(StringName animName)
+    {
         preCardDescription.Text = "";
         postCardDescription.Text = nextCard.GetDescription();
         animationPlayer.Play("RESET");
@@ -53,26 +71,13 @@ public partial class CardManager : Node
 
     public override void _Ready() {
         // Initialize the cards list with some card instances
-        cards.Add(new SimpleCard("Card 1", "Description of Card 1"));
-        cards.Add(new SimpleCard("Card 2", "Description of Card 2"));
-        cards.Add(new SimpleCard("Card 3", "Description of Card 3"));
+        cards.Add(new TutorialCard("Description of Card 1"));
+        cards.Add(new TutorialCard("Description of Card 2"));
+        cards.Add(new TutorialCard("Description of Card 3"));
         // Add more cards as needed
         animationPlayer.AnimationFinished += OnAnimationFinished;
         
 
     }
 
-
-    public override void _Process(double delta) {
-        if (lockInput) {
-            return;
-        }
-
-        if (Input.IsActionJustPressed("ui_left")) {
-            NextCard(CardInputType.LEFT);
-        } else if (Input.IsActionJustPressed("ui_right")) {
-            NextCard(CardInputType.RIGHT);
-        }
-
-    }
 }

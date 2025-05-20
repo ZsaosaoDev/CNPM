@@ -1,16 +1,19 @@
-public class SimpleCard : ICard
+public class TutorialCard : ICard
 {
-    private string name;
     private string description;
 
-    public SimpleCard(string name, string description)
+    public TutorialCard(string description)
     {
-        this.name = name;
         this.description = description;
     }
 
     public string GetDescription()
     {
         return description;
+    }
+
+    public void doAction(CardManager.CardInputType option)
+    {
+        return; // Implement the action logic here
     }
 }
