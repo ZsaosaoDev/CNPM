@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://3eh8wb6ch0tu"]
+[gd_scene load_steps=22 format=3 uid="uid://3eh8wb6ch0tu"]
 
 [ext_resource type="Script" uid="uid://ckssot44ppqw3" path="res://script/CardManager.cs" id="1_itxqv"]
 [ext_resource type="Texture2D" uid="uid://bjdui7b0lsxaf" path="res://assets/img/heart.svg" id="2_0ha60"]
@@ -12,6 +12,26 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no8bm"]
 bg_color = Color(0.975112, 0.838653, 0.857061, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5f6u"]
+bg_color = Color(0.936224, 0.596525, 0.657401, 1)
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqoya"]
+bg_color = Color(1, 0.531909, 0.406914, 1)
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_offset = Vector2(0, 3)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0l8b"]
 bg_color = Color(0.976471, 0.839216, 0.858824, 1)
@@ -84,14 +104,50 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("card_behind/Panel/MarginContainer/Panel2:theme_override_styles/panel:bg_color")
+tracks/3/path = NodePath("HSplitContainer/Panel2:theme_override_styles/panel:bg_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.6, 0.6, 0.6, 1)]
+"values": [Color(1, 0.531909, 0.406914, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HSplitContainer/Panel:theme_override_styles/panel:bg_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.936224, 0.596525, 0.657401, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HSplitContainer/Panel2:theme_override_styles/panel:border_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HSplitContainer/Panel:theme_override_styles/panel:border_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_p1hux"]
@@ -136,14 +192,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("card_behind/Panel/MarginContainer/Panel2:theme_override_styles/panel:bg_color")
+tracks/3/path = NodePath("HSplitContainer/Panel:theme_override_styles/panel:bg_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.20105, 1.24512),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.433333, 0.96, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.6, 0.6, 0.6, 1), Color(0.6, 0.6, 0.6, 1), Color(0.6, 0.6, 0.6, 0)]
+"values": [Color(0.936224, 0.596525, 0.657401, 1), Color(0.937255, 0.596078, 0.658824, 0), Color(0.937255, 0.596078, 0.658824, 0), Color(0.936224, 0.596525, 0.657401, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HSplitContainer/Panel:theme_override_styles/panel:border_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.42, 0.95, 1.23),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_itxqv"]
@@ -188,14 +256,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("card_behind/Panel/MarginContainer/Panel2:theme_override_styles/panel:bg_color")
+tracks/3/path = NodePath("HSplitContainer/Panel2:theme_override_styles/panel:bg_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.20105, 1.24512),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.433333, 1.02, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.6, 0.6, 0.6, 1), Color(0.6, 0.6, 0.6, 1), Color(0.6, 0.6, 0.6, 0)]
+"values": [Color(1, 0.531909, 0.406914, 1), Color(1, 0.533333, 0.407843, 0), Color(1, 0.533333, 0.407843, 0), Color(1, 0.531909, 0.406914, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HSplitContainer/Panel2:theme_override_styles/panel:border_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.43, 1.03, 1.24),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b5f6u"]
@@ -218,6 +298,64 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_no8bm")
+
+[node name="HSplitContainer" type="HBoxContainer" parent="CanvasLayer/main"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -450.0
+offset_top = -265.0
+offset_right = 450.0
+offset_bottom = -190.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 500
+alignment = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer/main/HSplitContainer"]
+clip_children = 2
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b5f6u")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/main/HSplitContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.853
+offset_bottom = 0.0249977
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="True" type="Label" parent="CanvasLayer/main/HSplitContainer/Panel/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "← Có"
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/main/HSplitContainer"]
+clip_children = 2
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tqoya")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/main/HSplitContainer/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.853
+offset_bottom = 0.0249977
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="True" type="Label" parent="CanvasLayer/main/HSplitContainer/Panel2/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "Nah →"
 
 [node name="card_behind" type="Panel" parent="CanvasLayer/main"]
 layout_mode = 2
@@ -253,7 +391,8 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/main/card_behind/Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
-stretch_mode = 3
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Panel" type="Panel" parent="CanvasLayer/main/card_behind/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -277,9 +416,7 @@ theme_override_constants/margin_bottom = 5
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.585062, 0.585062, 0.585062, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_brvut")
 autowrap_mode = 3
 
@@ -321,7 +458,8 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/main/card/Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
-stretch_mode = 3
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Panel" type="Panel" parent="CanvasLayer/main/card/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -345,9 +483,7 @@ theme_override_constants/margin_bottom = 5
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.585062, 0.585062, 0.585062, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_brvut")
 autowrap_mode = 3
 
@@ -463,8 +599,10 @@ happinessLabel = NodePath("../CanvasLayer/main/info-menu/Panel/CenterContainer/M
 script = ExtResource("9_tqoya")
 stats = NodePath("../Stats")
 
-[node name="Manager" type="Node" parent="." node_paths=PackedStringArray("animationPlayer", "preCardDescription", "postCardDescription")]
+[node name="Manager" type="Node" parent="." node_paths=PackedStringArray("animationPlayer", "preCardDescription", "postCardDescription", "preCardTexture", "postCardTexture")]
 script = ExtResource("1_itxqv")
 animationPlayer = NodePath("../CanvasLayer/main/AnimationPlayer")
 preCardDescription = NodePath("../CanvasLayer/main/card_behind/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/label")
 postCardDescription = NodePath("../CanvasLayer/main/card/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/desc")
+preCardTexture = NodePath("../CanvasLayer/main/card_behind/Panel/MarginContainer/VBoxContainer/TextureRect")
+postCardTexture = NodePath("../CanvasLayer/main/card/Panel/MarginContainer/VBoxContainer/TextureRect")
