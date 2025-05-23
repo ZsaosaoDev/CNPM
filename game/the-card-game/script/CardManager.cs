@@ -31,17 +31,19 @@ public partial class CardManager : Node
         
         lockInput = true;
 
-        // 4.3. lấy thẻ ngẫu nhiên
-        ICard randomCard = RandomCard();
-        nextCard = randomCard;
-        preCardDescription.Text = nextCard.GetDescription();
-        preCardTexture.Texture = nextCard.GetTexture();
+        
 
         // 4.6 thực hiện sự kiện
         if (postCard != null)
         {
             postCard.doAction(option);
         }
+
+        // 4.3. lấy thẻ ngẫu nhiên
+        ICard randomCard = RandomCard();
+        nextCard = randomCard;
+        preCardDescription.Text = nextCard.GetDescription();
+        preCardTexture.Texture = nextCard.GetTexture();
         
 
         if (option == CardInputType.LEFT)
