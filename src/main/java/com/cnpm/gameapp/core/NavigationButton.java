@@ -4,6 +4,7 @@ import com.formdev.flatlaf.FlatClientProperties;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class NavigationButton {
@@ -20,6 +21,7 @@ public class NavigationButton {
         }
         return button;
     }
+
 
     public static JButton create(String text, String targetCard, CardLayout layout, JPanel container) {
         return create(text, targetCard, layout, container, null);
