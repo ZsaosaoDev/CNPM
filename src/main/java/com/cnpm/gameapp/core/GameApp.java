@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameApp {
+    static JFrame frame;
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
@@ -20,7 +21,7 @@ public class GameApp {
     }
 
     private static void createAndShowGUI() {
-        JFrame frame = new JFrame("🎮 Mini Game Center");
+        frame = new JFrame("🎮 Mini Game Center");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
         frame.setLocationRelativeTo(null);
@@ -35,9 +36,12 @@ public class GameApp {
         container.add(new TicTacToePanel(cardLayout, container).getPanel(), "tictactoe");
         container.add(new MinesweeperPanel(cardLayout, container).getPanel(), "minesweeper");
         container.add(new SudokuPanel(cardLayout, container).getPanel(), "sudoku");
-//        container.add(new MemoryGamePanel(cardLayout, container).getPanel(), "memory");
 
         frame.setContentPane(container);
         frame.setVisible(true);
+    }
+
+    public static JFrame getFrame() {
+        return frame;
     }
 }
