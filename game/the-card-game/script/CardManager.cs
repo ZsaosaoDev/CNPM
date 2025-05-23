@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Collections.Generic;
 
 public partial class CardManager : Node 
 {
@@ -17,6 +16,10 @@ public partial class CardManager : Node
     [Export]
     private Label postCardDescription;
 
+    [Export]
+    private TextureRect preCardTexture;
+    [Export]
+    private TextureRect postCardTexture;
 
     private bool lockInput = false;
     public void NextCard(CardInputType option)
@@ -28,16 +31,19 @@ public partial class CardManager : Node
         
         lockInput = true;
 
-        // 4.3. lấy thẻ ngẫu nhiên
-        ICard randomCard = RandomCard();
-        nextCard = randomCard;
-        preCardDescription.Text = nextCard.GetDescription();
+        
 
         // 4.6 thực hiện sự kiện
         if (postCard != null)
         {
             postCard.doAction(option);
         }
+
+        // 4.3. lấy thẻ ngẫu nhiên
+        ICard randomCard = RandomCard();
+        nextCard = randomCard;
+        preCardDescription.Text = nextCard.GetDescription();
+        preCardTexture.Texture = nextCard.GetTexture();
         
 
         if (option == CardInputType.LEFT)
@@ -61,6 +67,7 @@ public partial class CardManager : Node
         animationPlayer.Play("RESET");
         lockInput = false;
         postCard = nextCard;
+        postCardTexture.Texture = nextCard.GetTexture();
     }
 
     private ICard RandomCard() {
