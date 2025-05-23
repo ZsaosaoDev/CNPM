@@ -11,14 +11,12 @@ public partial class CardManager : Node
     [Export]
     private AnimationPlayer animationPlayer;
     private ICard nextCard;
+    private ICard postCard;
     [Export]
     private Label preCardDescription;
     [Export]
     private Label postCardDescription;
 
-    
-
-    private List<ICard> cards = new List<ICard>();
 
     private bool lockInput = false;
     public void NextCard(CardInputType option)
@@ -35,12 +33,15 @@ public partial class CardManager : Node
         nextCard = randomCard;
         preCardDescription.Text = nextCard.GetDescription();
 
-        // 4.4 thực hiện sự kiện
-        randomCard.doAction(option);
+        // 4.6 thực hiện sự kiện
+        if (postCard != null)
+        {
+            postCard.doAction(option);
+        }
+        
 
         if (option == CardInputType.LEFT)
         {
-            // 4.9. Chạy animation
             animationPlayer.Play("left_drag");
         }
         else if (option == CardInputType.RIGHT)
@@ -51,7 +52,7 @@ public partial class CardManager : Node
         
 
     }
-    
+
     // 4.10. Kết thúc animation
     public void OnAnimationFinished(StringName animName)
     {
@@ -59,25 +60,22 @@ public partial class CardManager : Node
         postCardDescription.Text = nextCard.GetDescription();
         animationPlayer.Play("RESET");
         lockInput = false;
+        postCard = nextCard;
     }
 
     private ICard RandomCard() {
         Random random = new Random();
-        int randomIndex = random.Next(cards.Count);
-
-        return cards[randomIndex];
+        // 4.4 Đếm số lượng thẻ
+        int randomIndex = random.Next(CardDatabase.Instance.GetCardCount());
+        // 4.5 Lấy thẻ
+        return CardDatabase.Instance.GetCard(randomIndex);
     }
 
 
     public override void _Ready() {
-        // Initialize the cards list with some card instances
-        cards.Add(new TutorialCard("Description of Card 1"));
-        cards.Add(new TutorialCard("Description of Card 2"));
-        cards.Add(new TutorialCard("Description of Card 3"));
         // Add more cards as needed
         animationPlayer.AnimationFinished += OnAnimationFinished;
-        
-
+        NextCard(CardInputType.LEFT);
     }
 
 }

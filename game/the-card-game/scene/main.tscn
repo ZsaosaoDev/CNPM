@@ -1,6 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://3eh8wb6ch0tu"]
+[gd_scene load_steps=20 format=3 uid="uid://3eh8wb6ch0tu"]
 
 [ext_resource type="Script" uid="uid://ckssot44ppqw3" path="res://script/CardManager.cs" id="1_itxqv"]
+[ext_resource type="Texture2D" uid="uid://bjdui7b0lsxaf" path="res://assets/img/heart.svg" id="2_0ha60"]
+[ext_resource type="Texture2D" uid="uid://cm7bb8hsgftmj" path="res://assets/img/money.svg" id="3_4j5ol"]
+[ext_resource type="Texture2D" uid="uid://dkhsc7bbeyhea" path="res://assets/img/customer.svg" id="4_p1hux"]
+[ext_resource type="Script" uid="uid://cvf8s87un8x71" path="res://script/Player.cs" id="5_4j5ol"]
+[ext_resource type="Texture2D" uid="uid://bkiti8pty4p4n" path="res://assets/img/happiness.svg" id="5_of57s"]
+[ext_resource type="Script" uid="uid://jd8nbhyoprk" path="res://script/CardDatabase.cs" id="7_p1hux"]
+[ext_resource type="Script" uid="uid://cf33jnlx2aqrk" path="res://script/Stats.cs" id="8_b5f6u"]
+[ext_resource type="Script" uid="uid://d07ykvbgh2pfa" path="res://script/StatsManager.cs" id="9_tqoya"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no8bm"]
 bg_color = Color(0.975112, 0.838653, 0.857061, 1)
@@ -203,17 +211,13 @@ _data = {
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="main" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("animationPlayer", "preCardDescription", "postCardDescription")]
+[node name="main" type="Panel" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_no8bm")
-script = ExtResource("1_itxqv")
-animationPlayer = NodePath("AnimationPlayer")
-preCardDescription = NodePath("card_behind/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/label")
-postCardDescription = NodePath("card/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/desc")
 
 [node name="card_behind" type="Panel" parent="CanvasLayer/main"]
 layout_mode = 2
@@ -270,12 +274,14 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="label" type="Label" parent="CanvasLayer/main/card_behind/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer"]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.585062, 0.585062, 0.585062, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_styles/normal = SubResource("StyleBoxEmpty_brvut")
+autowrap_mode = 3
 
 [node name="Panel2" type="Panel" parent="CanvasLayer/main/card_behind/Panel/MarginContainer"]
 layout_mode = 2
@@ -336,13 +342,14 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="desc" type="Label" parent="CanvasLayer/main/card/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer"]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.585062, 0.585062, 0.585062, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_styles/normal = SubResource("StyleBoxEmpty_brvut")
-text = "Đây là text"
+autowrap_mode = 3
 
 [node name="info-menu" type="VBoxContainer" parent="CanvasLayer/main"]
 layout_mode = 1
@@ -358,7 +365,106 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4j5ol")
 
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/main/info-menu/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/main/info-menu/Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="VFlowContainer" type="VFlowContainer" parent="CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+
+[node name="HealthContainer" type="VFlowContainer" parent="CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer/HealthContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_0ha60")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer/HealthContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "100"
+
+[node name="MoneyContainer" type="VFlowContainer" parent="CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer/MoneyContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_4j5ol")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer/MoneyContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "100"
+
+[node name="CustomerContainer2" type="VFlowContainer" parent="CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer/CustomerContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("4_p1hux")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer/CustomerContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "100"
+
+[node name="HappinessContainer3" type="VFlowContainer" parent="CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer/HappinessContainer3"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("5_of57s")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer/HappinessContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "100"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/main"]
 libraries = {
 &"": SubResource("AnimationLibrary_b5f6u")
 }
+
+[node name="Player" type="Node" parent="." node_paths=PackedStringArray("cardManager")]
+script = ExtResource("5_4j5ol")
+cardManager = NodePath("../Manager")
+
+[node name="CardDatabase" type="Node" parent="."]
+script = ExtResource("7_p1hux")
+
+[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("healthLabel", "moneyLabel", "customer", "happinessLabel")]
+script = ExtResource("8_b5f6u")
+healthLabel = NodePath("../CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer/HealthContainer/Label")
+moneyLabel = NodePath("../CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer/MoneyContainer/Label")
+customer = NodePath("../CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer/CustomerContainer2/Label")
+happinessLabel = NodePath("../CanvasLayer/main/info-menu/Panel/CenterContainer/MarginContainer/VFlowContainer/HappinessContainer3/Label")
+
+[node name="StatsManager" type="Node" parent="." node_paths=PackedStringArray("stats")]
+script = ExtResource("9_tqoya")
+stats = NodePath("../Stats")
+
+[node name="Manager" type="Node" parent="." node_paths=PackedStringArray("animationPlayer", "preCardDescription", "postCardDescription")]
+script = ExtResource("1_itxqv")
+animationPlayer = NodePath("../CanvasLayer/main/AnimationPlayer")
+preCardDescription = NodePath("../CanvasLayer/main/card_behind/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/label")
+postCardDescription = NodePath("../CanvasLayer/main/card/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/desc")

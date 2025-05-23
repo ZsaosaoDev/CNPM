@@ -27,20 +27,58 @@ public partial class Stats : Node
 
     public void UpdateStats(int healthChange, int moneyChange, int customerChange, int happinessChange)
     {
-        health += healthChange;
-        money += moneyChange;
+
+        // 4.8. Cập nhật chỉ số
+        
+        
+        
         customerCount += customerChange;
         happiness += happinessChange;
-        // 4.7. Cập nhật label
+        if (health <= 100)
+        {
+            health += healthChange;
+        }
+        else
+        {
+            health = 100;
+        }
+
+        if (money <= 100)
+        {
+            money += moneyChange;
+        }
+        else
+        {
+            money = 100;
+        }
+
+        if (customerCount <= 100)
+        {
+            customerCount += customerChange;
+        }
+        else
+        {
+            customerCount = 100;
+        }
+
+        if (happiness <= 100)
+        {
+            happiness += happinessChange;
+        }
+        else
+        {
+            happiness = 100;
+        }
+
         UpdateLabels();
     }
 
     private void UpdateLabels()
     {
-        // 4.8. set label text
+        // 4.9. Cập nhật label
         healthLabel.Text = health.ToString();
         moneyLabel.Text = money.ToString();
-        customer.Text =  customerCount.ToString();
+        customer.Text = customerCount.ToString();
         happinessLabel.Text = happiness.ToString();
     }
 }
