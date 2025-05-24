@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://3eh8wb6ch0tu"]
+[gd_scene load_steps=25 format=3 uid="uid://3eh8wb6ch0tu"]
 
 [ext_resource type="Script" uid="uid://ckssot44ppqw3" path="res://script/CardManager.cs" id="1_itxqv"]
 [ext_resource type="Texture2D" uid="uid://bjdui7b0lsxaf" path="res://assets/img/heart.svg" id="2_0ha60"]
@@ -6,9 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://dkhsc7bbeyhea" path="res://assets/img/customer.svg" id="4_p1hux"]
 [ext_resource type="Script" uid="uid://cvf8s87un8x71" path="res://script/Player.cs" id="5_4j5ol"]
 [ext_resource type="Texture2D" uid="uid://bkiti8pty4p4n" path="res://assets/img/happiness.svg" id="5_of57s"]
+[ext_resource type="AudioStream" uid="uid://cgmujopgc53rq" path="res://assets/sound/ui.start_game.wav" id="5_wscrc"]
 [ext_resource type="Script" uid="uid://jd8nbhyoprk" path="res://script/CardDatabase.cs" id="7_p1hux"]
 [ext_resource type="Script" uid="uid://cf33jnlx2aqrk" path="res://script/Stats.cs" id="8_b5f6u"]
 [ext_resource type="Script" uid="uid://d07ykvbgh2pfa" path="res://script/StatsManager.cs" id="9_tqoya"]
+[ext_resource type="AudioStream" uid="uid://ckp8jaw0lyn64" path="res://assets/sound/kawaii-loop.ogg" id="11_mswub"]
+[ext_resource type="AudioStream" uid="uid://c5kwok2oxyddu" path="res://assets/sound/weapon.swings_0.ogg" id="12_hybxs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no8bm"]
 bg_color = Color(0.975112, 0.838653, 0.857061, 1)
@@ -149,6 +152,42 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../SFX:stream")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_wscrc")]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../../SFX:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../../SFX2:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_p1hux"]
 resource_name = "left_draw"
@@ -213,6 +252,42 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../SFX:stream")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_wscrc")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../SFX:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../SFX2:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.88),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_itxqv"]
 resource_name = "right_drag"
@@ -276,6 +351,30 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../SFX:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../SFX2:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.06),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b5f6u"]
@@ -606,3 +705,16 @@ preCardDescription = NodePath("../CanvasLayer/main/card_behind/Panel/MarginConta
 postCardDescription = NodePath("../CanvasLayer/main/card/Panel/MarginContainer/VBoxContainer/Panel/MarginContainer/desc")
 preCardTexture = NodePath("../CanvasLayer/main/card_behind/Panel/MarginContainer/VBoxContainer/TextureRect")
 postCardTexture = NodePath("../CanvasLayer/main/card/Panel/MarginContainer/VBoxContainer/TextureRect")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_mswub")
+volume_db = -11.757
+autoplay = true
+
+[node name="SFX2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_hybxs")
+volume_db = -12.0
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wscrc")
+volume_db = -12.893

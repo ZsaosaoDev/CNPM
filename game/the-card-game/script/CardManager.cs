@@ -59,7 +59,7 @@ public partial class CardManager : Node
 
     }
 
-    // 4.10. Kết thúc animation
+    // 4.11. Kết thúc animation
     public void OnAnimationFinished(StringName animName)
     {
         preCardDescription.Text = "";

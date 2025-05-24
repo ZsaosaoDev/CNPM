@@ -11,18 +11,28 @@ public partial class Stats : Node
     [Export]
     private Label happinessLabel;
 
-    private int health;
-    private int money;
-    private int customerCount;
-    private int happiness;
+    private double health;
+    private double money;
+    private double customerCount;
+    private double happiness;
+
+    private double incommingHealth;
+    private double incommingMoney;
+    private double incommingCustomer;
+    private double incommingHappiness;
 
 
     public override void _Ready()
     {
-        health = 100;
-        money = 100;
-        customerCount = 10;
-        happiness = 100;
+        health = 0;
+        money = 0;
+        customerCount = 0;
+        happiness = 0;
+
+        incommingHealth = 100;
+        incommingMoney = 100;
+        incommingCustomer = 10;
+        incommingHappiness = 100;
     }
 
     /// <summary>
@@ -40,56 +50,80 @@ public partial class Stats : Node
     {
 
         // 4.8. Cập nhật chỉ số
-
-
-
-        customerCount += customerChange;
-        happiness += happinessChange;
-        if (health <= 100)
+        if (incommingHealth <= 100)
         {
-            health += healthChange;
+            incommingHealth += healthChange;
         }
         else
         {
-            health = 100;
+            incommingHealth = 100;
         }
 
-        if (money <= 100)
+        if (incommingMoney <= 100)
         {
-            money += moneyChange;
+            incommingMoney += moneyChange;
         }
         else
         {
-            money = 100;
+            incommingMoney = 100;
         }
 
-        if (customerCount <= 100)
+        if (incommingCustomer <= 100)
         {
-            customerCount += customerChange;
+            incommingCustomer += customerChange;
         }
         else
         {
-            customerCount = 100;
+            incommingCustomer = 100;
         }
 
-        if (happiness <= 100)
+        if (incommingHappiness <= 100)
         {
-            happiness += happinessChange;
+            incommingHappiness += happinessChange;
         }
         else
         {
-            happiness = 100;
+            incommingHappiness = 100;
         }
-
-        UpdateLabels();
     }
 
     private void UpdateLabels()
     {
-        // 4.9. Cập nhật label
-        healthLabel.Text = health.ToString();
-        moneyLabel.Text = money.ToString();
-        customer.Text = customerCount.ToString();
-        happinessLabel.Text = happiness.ToString();
+        healthLabel.Text = Mathf.RoundToInt(health).ToString();
+        moneyLabel.Text = Mathf.RoundToInt(money).ToString();
+        customer.Text = Mathf.RoundToInt(customerCount).ToString();
+        happinessLabel.Text = Mathf.RoundToInt(happiness).ToString();
+    }
+
+    public override void _Process(double delta)
+    {
+        // 4.10. Thay đổi chỉ số một cách mượt mà
+        incommingHealth = Mathf.Clamp(incommingHealth, 0, 100);
+        incommingMoney= Mathf.Clamp(incommingMoney, 0, 100);
+        incommingCustomer= Mathf.Clamp(incommingCustomer, 0, 100);
+        incommingHappiness = Mathf.Clamp(incommingHappiness, 0, 100);
+
+        SmoothChange(ref health, incommingHealth, delta);
+        SmoothChange(ref money, incommingMoney, delta);
+        SmoothChange(ref customerCount, incommingCustomer, delta);
+        SmoothChange(ref happiness, incommingHappiness, delta);
+
+        
+
+        
+        UpdateLabels();
+    }
+
+    private void SmoothChange(ref double currentValue, double targetValue, double delta, double smoothingFactor = 10)
+    {
+        if (currentValue == targetValue)
+        {
+            currentValue = targetValue; 
+            return; 
+        }
+
+        double changeAmount = (targetValue - currentValue) * smoothingFactor * delta;
+        currentValue += changeAmount;
+
     }
 }
